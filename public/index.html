@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robotics Sign in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+
+    <!-- update the version number as needed -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+
+
+    <!--script defer src="/__/firebase/6.6.0/firebase-app.js"></script-->
+    <!-- include only the Firebase features as you need -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.6.0/firebase-database.js"></script>
+    <!--script defer src="/__/firebase/6.6.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.6.0/firebase-storage.js"></script-->
+    <!-- initialize the SDK after all desired features are loaded -->
+    <!--script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script-->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+    <!--script defer src="/__/firebase/init.js"></script-->
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script src="./suportev/index.js"></script>
+
+
+</head>
+<body>
+<!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+<h1 class="h1">Robotics Club Signin</h1>
+<div id="r1" class="loggefd_in"></div>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+
+<iframe id="input_forum" src=""width="100%" height="340" align="top"></iframe>
+
+<a class="button logged_in" id="signOut">Sign Out</a>
+<!-- <div name="firebase_encoded_id_token" value="2">
+    vlas
+</div>-->
+<script src="./suportev/signinin.js"></script>
+</body>
+</html>

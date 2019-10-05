@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create New Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+
+    <!-- update the version number as needed -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+</head>
+<body>
+
+<form action="" method="POST" id="newcodeform">
+    <h1>Signin Code</h1>
+      <label for="code">code: </label>
+      <input type="text" name="code" value="" id="code" required />     
+       
+      <label for="startdate">start date: </label>
+      <input type="datetime-local" name="startdate" 
+      value="" id="startdate" required />
+      
+      <label for="enddate">start date: </label>
+      <input type="datetime-local" name="enddate" 
+      value="" id="enddate" required />
+
+
+      <button type="submit" sendMessage()>Submit Code</button>
+  </form>
+
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script src="/suportev/index.js"></script>
+  <script src="./newcode.js"></script>
+</body>
+</html>
