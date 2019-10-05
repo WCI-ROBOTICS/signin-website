@@ -4,7 +4,7 @@ document.getElementById("enddate").value = new Date().toISOString().slice(0, 11)
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     firebase.database().ref("admins").once('value').then(function(val){
-    if (val.val()[user.email.replace('.', '%2E')]){
+    if (!val.val()[user.email.replace('.', '%2E')]){
         window.location.href = "/";
     }else{
     //Reference for form collection(3)
