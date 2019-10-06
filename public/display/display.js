@@ -10,9 +10,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             Object.keys(allCodes).forEach(function(key){
                 scanCode = allCodes[key]
                 timeNow= +new Date()
-                //console.log(timeNow)
-                //console.log(scanCode["startTime"])
-                //console.log(scanCode["endTime"])
                 if (scanCode["startTime"] <= timeNow &
                     timeNow <= scanCode["endTime"]){
                     currentCode = key; 

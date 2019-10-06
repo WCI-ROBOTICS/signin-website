@@ -5,6 +5,10 @@
         ".read": true,
         ".write": "root.child('admins').child(auth.token.email.replace('.', '%2E')).exists()"
     },
+    "weekly_codes": {
+        ".read": true,
+        ".write": "root.child('admins').child(auth.token.email.replace('.', '%2E')).exists()"
+    },
      ".read": true,
      ".write": true
   }
