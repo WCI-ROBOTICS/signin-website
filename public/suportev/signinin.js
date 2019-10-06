@@ -37,17 +37,18 @@
     let goOut = false
 
     firebase.auth().onAuthStateChanged(function (user) {
-        //if (firebase.auth().currentUser.metadata.creationTime === 
-          //  firebase.auth().currentUser.metadata.lastSignInTime){
-            if (!user.email.endsWith("@wrdsb.ca" && !goOut)){
-                alert("Please sign in with your WRDSB email");
-                firebase.auth().signOut();
-                goOut = true
-            } else {
+        if (user && !user.email.endsWith("@wrdsb.ca") && !goOut){
+            alert("Please sign in with your WRDSB email");
+            firebase.auth().signOut();
+            goOut = true
+        } else {
             goOut = false
-            }
-        //}
+        }
         if (user && !goOut) {
+            if (firebase.auth().currentUser.metadata.creationTime === 
+                firebase.auth().currentUser.metadata.lastSignInTime){
+                firebase.database().ref("users/"+user.email.replace(".", "%2E")).set(user.uid);
+            }
             uid = user.uid;
             toggle('logged_in', 'flex');
             toggle('logged_out', 'flex');
