@@ -39,11 +39,11 @@
         if (user) {
             uid = user.uid;
             toggle('logged_in', 'flex');
-            toggle('logged_out', 'none');
+            toggle('logged_out', 'flex');
             
-            firebase.database().ref("weekly_codes").once('value').then(function(val){
+            firebase.database().ref("weekly_codes").on('value', function(val){
                 let allCodes = val.val() || [];
-                firebase.database().ref("user_codes/"+uid).once('value').then(function(val){
+                firebase.database().ref("user_codes/"+uid).on('value', function(val){
                     let submitted = val.val() || [];
                     let count = 0;
                     var accounted = [];
@@ -85,7 +85,7 @@
             document.getElementById('loader').style.display = 'none';
         } else {
             toggle('logged_in', 'none');
-            toggle('logged_out', 'block');
+            toggle('logged_out', 'flex');
             for (var j = 0; j < tokens.length; j++) {
                 tokens[j].value = "";
             }
@@ -97,5 +97,8 @@
     });
     document.getElementById('signOut').addEventListener('click', function (event) {
         firebase.auth().signOut();
+    });
+    document.getElementById('memberCount').addEventListener('click', function (event) {
+        window.location.href = "/members";
     });
     document.getElementById('signOut').style.display = 'none';

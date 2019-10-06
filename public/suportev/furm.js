@@ -30,6 +30,6 @@ function sendMessage(code) {
    code_submitted: code,
    time: +new Date()})
   newFormMessage.set(data);
-  window.top.location.reload();
+  //window.top.location.reload();
   });
 }
