@@ -9,7 +9,9 @@
         ".read": true,
         ".write": "root.child('admins').child(auth.token.email.replace('.', '%2E')).exists()"
     },
-     ".read": true,
-     ".write": "auth != null"
+    "user_codes": {
+        ".read": true,
+        ".write": "auth != null"
+    }
   }
 }

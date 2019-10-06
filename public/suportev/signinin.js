@@ -34,9 +34,20 @@
     var uid = null;
     var tokens = document.getElementsByName("firebase_encoded_id_token");
     var forum_frame = document.getElementById("input_forum");
+    let goOut = false
 
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
+        //if (firebase.auth().currentUser.metadata.creationTime === 
+          //  firebase.auth().currentUser.metadata.lastSignInTime){
+            if (!user.email.endsWith("@wrdsb.ca" && !goOut)){
+                alert("Please sign in with your WRDSB email");
+                firebase.auth().signOut();
+                goOut = true
+            } else {
+            goOut = false
+            }
+        //}
+        if (user && !goOut) {
             uid = user.uid;
             toggle('logged_in', 'flex');
             toggle('logged_out', 'flex');
@@ -90,7 +101,7 @@
                 tokens[j].value = "";
             }
             document.getElementById('r1').innerText = 'NOT SIGNED IN';
-            forum_frame.src = "http://foo.com";
+            forum_frame.src = "";
             forum_frame.style.display = "none";
             ui.start('#firebaseui-auth-container', uiConfig);
         }
