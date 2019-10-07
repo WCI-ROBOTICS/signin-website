@@ -1,4 +1,7 @@
 // Initialize the FirebaseUI Widget using Firebase.
+
+    let admnn = document.getElementById('adminControls');
+    admnn.style.display = "none";
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
     var uiConfig = {
@@ -49,6 +52,15 @@
                 firebase.auth().currentUser.metadata.lastSignInTime){
                 firebase.database().ref("users/"+user.email.replace(".", "%2E")).set(user.uid);
             }
+            firebase.database().ref("admins").once('value').then(function(val){
+            if (!val.val()[user.email.replace('.', '%2E')]){
+                toggle('admin', 'none');
+                admnn.style.display = "none";
+            }else{
+                toggle('admin', 'flex');
+                admnn.style.display = "block";
+            }
+            });
             uid = user.uid;
             toggle('logged_in', 'flex');
             toggle('logged_out', 'flex');
@@ -112,5 +124,14 @@
     });
     document.getElementById('memberCount').addEventListener('click', function (event) {
         window.location.href = "/members";
+    });
+    document.getElementById('displayCode').addEventListener('click', function (event) {
+        window.location.href = "/display";
+    });
+    document.getElementById('addCode').addEventListener('click', function (event) {
+        window.location.href = "/display/new";
+    });
+    document.getElementById('grantAttendence').addEventListener('click', function (event) {
+        window.location.href = "/grant";
     });
     document.getElementById('signOut').style.display = 'none';
