@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //listen for submit event//(1)
     document
-      .getElementById('newcodeform')
+      .getElementById('grantcode')
       .addEventListener('submit', formSubmit);
 
     //Submit form(1.2)

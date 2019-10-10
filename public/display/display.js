@@ -10,7 +10,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             Object.keys(allCodes).forEach(function(key){
                 scanCode = allCodes[key]
                 timeNow= +new Date()
-                if (scanCode["startTime"] <= timeNow &
+                if (scanCode["startTime"] <= timeNow &&
                     timeNow <= scanCode["endTime"]){
                     currentCode = key; 
                 }
@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.getElementById('code').innerText=currentCode
             endTime = allCodes[currentCode]["endTime"] || +new Date;
             var x = setInterval(function(){
-                var dist = +endTime - (+new Date);
+                var dist = endTime - (+new Date);
                 var days = Math.floor(dist / (1000 * 60 * 60 * 24));
                 var hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));

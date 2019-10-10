@@ -24,7 +24,15 @@ firebase.auth().onAuthStateChanged(function(user) {
       let enddate = document.querySelector('#enddate').value;
       
       //send message values
-      sendMessage(sicode, startdate, enddate);
+      let startTime = +new Date(startdate);
+      let endTime = +new Date(enddate);
+      
+      if (startTime >= endTime){
+        alert("end time comes after start time");
+      }
+      else {
+        sendMessage(sicode, startTime, endTime);
+      }
     }
 
     //Send Message to Firebase(4)
@@ -32,8 +40,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     function sendMessage(code, startdate, enddate) {
       newFormMessage = formMessage.child(code);
       var data = {
-       startTime: +new Date(startdate),
-       endTime: +new Date(enddate)}
+       startTime: startdate,
+       endTime: enddate}
       formMessage.once('value').then(function(val){
           codes = val.val() || []
           if(codes[code]!= undefined){
@@ -41,6 +49,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           } 
           else{
             newFormMessage.set(data);
+            alert(`"${code}" will be valid from '${new Date(startdate).toLocaleString()}' to '${new Date(enddate).toLocaleString()}'`);
             window.location.href = "/display";
           }
        });

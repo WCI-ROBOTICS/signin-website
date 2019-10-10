@@ -52,7 +52,7 @@
                 firebase.auth().currentUser.metadata.lastSignInTime){
                 firebase.database().ref("users/"+user.email.replace(".", "%2E")).set(user.uid);
             }
-            firebase.database().ref("admins").once('value').then(function(val){
+            firebase.database().ref("admins").on('value', function(val){
             if (!val.val()[user.email.replace('.', '%2E')]){
                 toggle('admin', 'none');
                 admnn.style.display = "none";
@@ -75,7 +75,7 @@
                         currentCode = submitted[o]["code_submitted"];
                         currentTime = submitted[o]["time"];
                         if (currentCode in allCodes && 
-                            !(currentCode in accounted)){
+                            !(accounted.indexOf(currentCode)>=0)){
                             let matchingCode = allCodes[currentCode];
                             if (currentTime >= matchingCode["startTime"] &&
                                 currentTime <= matchingCode["endTime"]){
